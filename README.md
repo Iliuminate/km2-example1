@@ -1,5 +1,8 @@
 This is a Kotlin Multiplatform project targeting Android, iOS.
 
+This is a Exercise to use KMP and shared shared graphics layers
+
+
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
   - `commonMain` is for code that’s common for all targets.
