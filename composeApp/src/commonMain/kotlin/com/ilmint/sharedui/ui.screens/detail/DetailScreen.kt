@@ -20,8 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.ilmint.sharedui.Movie
-import com.ilmint.sharedui.movies
+import com.ilmint.sharedui.data.Movie
 import com.ilmint.sharedui.ui.screens.Screen
 import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.back

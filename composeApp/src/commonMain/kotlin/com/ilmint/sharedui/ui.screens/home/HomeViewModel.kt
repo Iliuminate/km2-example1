@@ -5,12 +5,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ilmint.sharedui.Movie
-import com.ilmint.sharedui.movies
+import com.ilmint.sharedui.data.Movie
+import com.ilmint.sharedui.data.MovieServices
+import com.ilmint.sharedui.data.RemoteMovie
+import com.ilmint.sharedui.data.movies
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val movieServices: MovieServices
+) : ViewModel() {
 
     var state by mutableStateOf(UiState())
         private set
@@ -18,8 +22,12 @@ class HomeViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             state = UiState(isLoading = true)
-            delay(timeMillis = 1000)
-            state = UiState(isLoading = false, movies = movies)
+            //delay(timeMillis = 1000)
+            state = UiState(
+                isLoading = false,
+                movies = movieServices.fetchPopularMovies().results.map { it.toDomainMovie() }
+            )
+
         }
     }
 
@@ -28,3 +36,9 @@ class HomeViewModel : ViewModel() {
         val movies: List<Movie> = emptyList()
     )
 }
+
+private fun RemoteMovie.toDomainMovie() = Movie(
+    id = id,
+    title = title,
+    poster = "https://image.tmdb.org/t/p/w500$posterPath"
+)

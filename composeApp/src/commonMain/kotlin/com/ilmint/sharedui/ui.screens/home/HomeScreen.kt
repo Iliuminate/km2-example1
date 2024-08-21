@@ -29,8 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 
-import com.ilmint.sharedui.Movie
-import com.ilmint.sharedui.movies
+import com.ilmint.sharedui.data.Movie
 import com.ilmint.sharedui.ui.screens.Screen
 
 import kotlinproject.composeapp.generated.resources.Res
@@ -41,7 +40,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun HomeScreen(
     onMovieClick: (Movie) -> Unit,
-    vm: HomeViewModel = viewModel{ HomeViewModel() } // Esto sirve para que reutilicemos el viewmodel que creamos anteriormente y no se recomponga todas las veces
+    vm: HomeViewModel // Esto sirve para que reutilicemos el viewmodel que creamos anteriormente y no se recomponga todas las veces
 ) {
     Screen {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
