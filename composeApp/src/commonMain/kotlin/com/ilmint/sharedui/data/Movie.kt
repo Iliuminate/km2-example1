@@ -1,4 +1,4 @@
-package com.ilmint.sharedui
+package com.ilmint.sharedui.data
 
 data class Movie(
     val id: Int,
